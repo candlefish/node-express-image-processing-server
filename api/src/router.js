@@ -1,10 +1,8 @@
 const { Router } = require('express');
 const multer = require('multer');
-// const { router } = require('../app');
+const router = Router();
 const storage = multer.diskStorage({destination: 'api/uploads/', filename: filename});
 const upload = multer({fileFilter, storage: storage});
-
-const router = Router();
 
 router.post('/upload', upload.single('photo'), (request, response) => {
     if (request.fileValidationError) {
